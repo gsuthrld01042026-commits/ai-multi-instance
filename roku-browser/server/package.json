@@ -1,0 +1,17 @@
+{
+  "name": "tv-browser-server",
+  "version": "1.0.0",
+  "description": "Renders web pages in headless Chromium for the TV Browser Roku channel",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "setup": "npm install && npx playwright install chromium",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}

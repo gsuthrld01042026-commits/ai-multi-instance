@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="MainScene" extends="Scene">
+  <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+  <children>
+    <Rectangle id="bg" width="1280" height="720" color="0x101418FF" />
+
+    <!-- Two posters so the next frame loads off-screen, then swaps in without flicker. -->
+    <Poster id="frameA" width="1280" height="720" loadDisplayMode="scaleToFit" />
+    <Poster id="frameB" width="1280" height="720" loadDisplayMode="scaleToFit" visible="false" />
+
+    <Label id="placeholder" width="1280" height="720" horizAlign="center" vertAlign="center"
+      wrap="true" color="0xC8D0D8FF" font="font:MediumSystemFont" text="Connecting to the TV Browser server..." />
+
+    <Group id="cursor">
+      <Rectangle width="22" height="22" translation="[-11,-11]" color="0x000000FF" />
+      <Rectangle width="18" height="18" translation="[-9,-9]" color="0xFFFFFFFF" />
+      <Rectangle width="10" height="10" translation="[-5,-5]" color="0xE53935FF" />
+    </Group>
+
+    <Rectangle id="busy" width="140" height="36" translation="[1120,20]" color="0x000000CC" visible="false">
+      <Label width="140" height="36" horizAlign="center" vertAlign="center" text="Loading..."
+        color="0xFFFFFFFF" font="font:SmallestSystemFont" />
+    </Rectangle>
+
+    <Group id="statusBar" visible="false">
+      <Rectangle width="1280" height="48" translation="[0,672]" color="0x000000DD" />
+      <Label id="statusLabel" translation="[24,672]" width="1232" height="48" vertAlign="center"
+        color="0xFFFFFFFF" font="font:SmallSystemFont" />
+    </Group>
+
+    <Group id="menu" visible="false" translation="[430,80]">
+      <Rectangle width="420" height="560" color="0x1E252CF2" />
+      <Label text="TV Browser" translation="[28,18]" color="0xFFFFFFFF" font="font:MediumBoldSystemFont" />
+      <LabelList id="menuList" translation="[28,70]" itemSize="[364,42]" />
+    </Group>
+
+    <Timer id="holdTimer" duration="0.05" repeat="true" />
+    <Timer id="refreshTimer" duration="2.5" repeat="true" />
+    <Timer id="statusTimer" duration="5" />
+    <Timer id="exitTimer" duration="3" />
+  </children>
+</component>
